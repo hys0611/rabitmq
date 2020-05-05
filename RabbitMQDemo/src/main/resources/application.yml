@@ -1,0 +1,50 @@
+logging:
+  lever:
+    com.rabbitmq.mqtt: INFO
+---
+spring:
+  profile: dev
+  mqtt:
+    url: tcp://127.0.0.1:1883
+    username: guest
+    password: guest
+    client_id: mqttId1
+    default.topic: test
+    qos: 1
+    timeOut: 10000
+    keepAlive: 20
+    topics:
+      T#,
+      a#
+#mqtt.run.mode: sender
+##mqtt.run.mode: receiver
+---
+spring:
+  profile: uat
+  mqtt:
+    url: tcp://127.0.0.1:1883
+    username: guest
+    password: guest
+    client_id: mqttId1
+    default.topic: test
+    qos: 1
+    timeOut: 10000
+    keepAlive: 20
+    topics:
+      T#,
+      a#
+---
+spring:
+  profile: prod
+  mqtt:
+    url: tcp://127.0.0.1:1883
+    username: guest
+    password: guest
+    client_id: mqttId1
+    default.topic: test
+    qos: 1
+    timeOut: 10000
+    keepAlive: 20
+    topics:
+      T#,
+      a#
