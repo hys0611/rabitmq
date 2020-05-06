@@ -23,16 +23,13 @@ public class PublishDemo implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        subscribeService.subscribe("T/#","client-T");
-//        subscribeService.subscribe("a/#","client-a");
+        subscribeService.subscribe("T/#","client-T");
+        subscribeService.subscribe("a/#","client-a");
         List<Integer> list = new ArrayList<>();
-        for (int i = 0; i < 15; i++) {
-            list.add(i);
-        }
-        list.forEach(i->{
+        for (int i = 0; i < 30; i++) {
             publishService.pulish("T/"+i,String.format("this is %d message", i));
             publishService.pulish("a/"+i,String.format("this is %d message", i));
-        });
+        }
         System.exit(0);
     }
 }
