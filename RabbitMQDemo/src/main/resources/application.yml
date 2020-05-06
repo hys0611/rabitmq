@@ -1,6 +1,9 @@
 logging:
   lever:
     com.rabbitmq.mqtt: INFO
+spring:
+  profiles:
+    active: dev
 ---
 spring:
   profile: dev
@@ -13,16 +16,12 @@ spring:
     qos: 1
     timeOut: 10000
     keepAlive: 20
-    topics:
-      T#,
-      a#
-#mqtt.run.mode: sender
-##mqtt.run.mode: receiver
+mqtt.run.mode: demo
 ---
 spring:
   profile: uat
   mqtt:
-    url: tcp://127.0.0.1:1883
+    host.url: tcp://127.0.0.1:1883
     username: guest
     password: guest
     client_id: mqttId1
@@ -30,9 +29,6 @@ spring:
     qos: 1
     timeOut: 10000
     keepAlive: 20
-    topics:
-      T#,
-      a#
 ---
 spring:
   profile: prod
@@ -45,6 +41,3 @@ spring:
     qos: 1
     timeOut: 10000
     keepAlive: 20
-    topics:
-      T#,
-      a#
