@@ -30,8 +30,9 @@ public class PublishDemo implements CommandLineRunner {
             list.add(i);
         }
         list.forEach(i->{
-            publishService.pulish("T",String.format("this is %d message", i));
-            publishService.pulish("a",String.format("this is %d message", i));
+            publishService.pulish("T/"+i,String.format("this is %d message", i));
+            publishService.pulish("a/"+i,String.format("this is %d message", i));
         });
+        System.exit(0);
     }
 }

@@ -18,12 +18,12 @@ public class SubscribeDemo {
             MqttClient client = new MqttClient(hostUrl, "ClientT", new MemoryPersistence());
             client.setCallback(new RabbitMqttCallBack());
             client.connect(options);
-            client.subscribe("T", qos);
+            client.subscribe("T/#", qos);
 
             MqttClient client2 = new MqttClient(hostUrl, "Clienta", new MemoryPersistence());
             client2.setCallback(new RabbitMqttCallBack());
             client2.connect(options);
-            client2.subscribe("a", qos);
+            client2.subscribe("a/#", qos);
         } catch (Exception e) {
             e.printStackTrace();
         }
