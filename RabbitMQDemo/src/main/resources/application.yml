@@ -1,42 +1,73 @@
 logging:
   lever:
     com.rabbitmq.mqtt: INFO
-spring:
-  profiles:
+spring:  profiles:
     active: dev
 ---
 spring:
-  profile: dev
+  profiles: dev
   mqtt:
     url: tcp://127.0.0.1:1883
     username: guest
     password: guest
-    client_id: mqttId1
+    client_id: client
     default.topic: test
     qos: 1
     timeOut: 10000
     keepAlive: 20
 mqtt.run.mode: demo
+mqtt.topic.size: 10
+mqtt.topic.longName: false
 ---
 spring:
-  profile: uat
+  profiles: dev-vm1
   mqtt:
-    host.url: tcp://127.0.0.1:1883
+    url: tcp://tsc-rabbit-test1:1883
+    username: rabbitmqtest
+    password: tsctest2020
+    client_id: client
+    default.topic: test
+    qos: 1
+    timeOut: 10000
+    keepAlive: 20
+mqtt.run.mode: demo
+mqtt.topic.size: 10
+mqtt.topic.longName: false
+---
+spring:
+  profiles: dev-vm2
+  mqtt:
+    url: tcp://tsc-rabbit-test2:1883
+    username: rabbitmqtest
+    password: tsctest2020
+    client_id: client
+    default.topic: test
+    qos: 1
+    timeOut: 10000
+    keepAlive: 20
+mqtt.run.mode: demo
+mqtt.topic.size: 10
+mqtt.topic.longName: false
+---
+spring:
+  profiles: test
+  mqtt:
+    url: tcp://127.0.0.1:1883
     username: guest
     password: guest
-    client_id: mqttId1
+    client_id: client
     default.topic: test
     qos: 1
     timeOut: 10000
     keepAlive: 20
 ---
 spring:
-  profile: prod
+  profiles: prod
   mqtt:
     url: tcp://127.0.0.1:1883
     username: guest
     password: guest
-    client_id: mqttId1
+    client_id: client
     default.topic: test
     qos: 1
     timeOut: 10000

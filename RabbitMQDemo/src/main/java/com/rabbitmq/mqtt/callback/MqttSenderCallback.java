@@ -4,20 +4,27 @@ import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
-public class RabbitMqttCallBack implements MqttCallback {
+import lombok.extern.slf4j.Slf4j;
 
-    @Override
+@Slf4j
+public class MqttSenderCallback implements MqttCallback {
+
+	// Event when the connection is lost
+	@Override
     public void connectionLost(Throwable cause) {
-        System.out.println("connectionLost");
+		log.info("connection is lost");
     }
 
+	// Event when a message arrives
     @Override
     public void messageArrived(String topic, MqttMessage message) throws Exception {
-        System.out.println(String.format("receive msg -- topic:[%s], msg:[%s]",topic,new String(message.getPayload())));
+//		TODO
+        log.info("receive msg -- topic:[{}], msg:[{}]",topic,new String(message.getPayload()));
     }
 
+    // Event when a delivery completes
     @Override
     public void deliveryComplete(IMqttDeliveryToken token) {
-        System.out.println("deliveryComplete---------" + token.isComplete());
+    	log.info("delivery is completed---------" + token.isComplete());
     }
 }
